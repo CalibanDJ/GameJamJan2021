@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 .vsconfig
 /[Uu]ser[Ss]ettings/
+
+#Custom
+Packages/packages-lock.json
