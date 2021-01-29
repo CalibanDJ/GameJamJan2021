@@ -7,7 +7,7 @@ public class ItemGenerator : MonoBehaviour
 {
     private GrowingRNG itemType;
     private GrowingRNG itemCaract;
-    // Param pr le nbr de caractéristique
+    // Param pr le nbr de caractéristiques
 
     public ItemGenerator(GrowingRNG typeGen, GrowingRNG caractGen) {
         itemType = typeGen;
@@ -17,7 +17,7 @@ public class ItemGenerator : MonoBehaviour
     // WIP
     public void generate() {
         int type = itemType.generateNumber();
-        int carac = caractGen.generateNumber();
+        int carac = itemCaract.generateNumber();
 
         // Retourner l'obet correspondant
     }
