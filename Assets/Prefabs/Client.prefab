@@ -48,6 +48,9 @@ MonoBehaviour:
   dialogPrefab: {fileID: 1182850550210412207, guid: f58c91f8899c0194fbc3a160648327d9, type: 3}
   dialogParent: {fileID: 0}
   cam: {fileID: 0}
+  mouseCollider: {fileID: 4177765275396008837}
+  desiredShape: {fileID: 0}
+  desiredColor: {fileID: 0}
 --- !u!212 &8922114856535065574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,9 +88,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1136075259
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

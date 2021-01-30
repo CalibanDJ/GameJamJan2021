@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClientGenerator : Generator
 {
     public ItemGenerator itemGen;
+    public Transform dialogParent;
 
     public Client clientPrefab;
 
@@ -21,11 +22,12 @@ public class ClientGenerator : Generator
     private void assignWaitingLine(Client c) {
         int WLineIdx = Random.Range(0, wLines.Length);
 
-        wLines[WLineIdx].addClient(c);
+        c.setLine(wLines[WLineIdx]);
     }
 
     public override void generate() {
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
+        c.dialogParent = dialogParent;
         assignDesiredItem(c);
         assignWaitingLine(c);
     }
