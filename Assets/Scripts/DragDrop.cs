@@ -31,13 +31,23 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             cam = Camera.main;
     }
 
+    public void OnMouseDown()
+    {
+        WorldSound.Instance.playDragItem();
+        CursorController.Instance.setClicked();
+    }
+
+    public void OnMouseUp()
+    {
+        CursorController.Instance.setUnclicked();
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         mouseJoint.anchor = transform.InverseTransformPoint(eventData.pointerPressRaycast.worldPosition);
         mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
         mouseJoint.enabled = true;
         gameObject.layer = movingLayer;
-        WorldSound.Instance.playDragItem();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -58,6 +68,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         float mag = itemBody.velocity.magnitude;
         if (mag > releaseMaxSpeed)
             itemBody.velocity = itemBody.velocity / mag * releaseMaxSpeed;
+
     }
 }
 
