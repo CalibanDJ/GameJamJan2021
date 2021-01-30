@@ -20,6 +20,8 @@ public class Client : MonoBehaviour
     public IList<ICharacteristic> desiredCharacteristics;
     public float leaveTimer;
     public bool active = false;
+    public AudioSource goodItem;
+   // public AudioSource wrongItem;
 
     public void Start()
     {
@@ -51,6 +53,10 @@ public class Client : MonoBehaviour
     {
         bool allCorrect = desiredCharacteristics.All(ch => item.hasCharacteristic(ch));
         int score = allCorrect ? desiredCharacteristics.Count : 0;
+        if (allCorrect)
+            WorldSound.Instance.playCorrectItem();
+        else
+            WorldSound.Instance.playWrongItem();
 
         Destroy(item.gameObject);
         dispawn();

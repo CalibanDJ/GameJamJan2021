@@ -17,6 +17,8 @@ public class ItemGenerator : Generator
 
     public static ItemGenerator Instance { get; private set; }
 
+    public AudioSource audioSource;
+
     public void Awake()
     {
         Instance = this;
@@ -32,6 +34,8 @@ public class ItemGenerator : Generator
         i.transform.GetComponent<SpriteRenderer>().sortingOrder = 5;
         i.setColor(data.colors[colorIdx]);
         i.setShape(data.shapes[shapeIdx]);
+
+        //audioSource.Play();
     }
 
     public void setSpawnPosition(Vector2 newPosition) {

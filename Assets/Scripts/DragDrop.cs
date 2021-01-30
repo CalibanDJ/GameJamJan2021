@@ -37,6 +37,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
         mouseJoint.enabled = true;
         gameObject.layer = movingLayer;
+        WorldSound.Instance.playDragItem();
     }
 
     public void OnDrag(PointerEventData eventData)
