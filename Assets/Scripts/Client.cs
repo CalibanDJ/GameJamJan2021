@@ -8,15 +8,19 @@ public class Client : MonoBehaviour
     public DialogBubble dialogPrefab;
     public Transform dialogParent;
     public Camera cam;
+    public Collider2D mouseCollider;
     private DialogBubble lastBubble;
+    private WaitingLine line;
 
     public Shape desiredShape;
     public ColorAttr desiredColor;
 
     public IList<ICharacteristic> desiredCharacteristics;
 
-    private void Awake()
+    public void Start()
     {
+        if (cam == null)
+            cam = Camera.main;
         desiredCharacteristics = new List<ICharacteristic>();
         if (desiredShape != null)
             desiredCharacteristics.Add(desiredShape);
@@ -50,8 +54,20 @@ public class Client : MonoBehaviour
         // TODO add score
     }
 
+    public void setLine(WaitingLine line)
+    {
+        this.line = line;
+        this.line.addClient(this);
+    }
+
+    public void setActive(bool active)
+    {
+        mouseCollider.enabled = active;
+    }
+
     public void reject()
     {
+        line.nextClient();
         if (lastBubble != null)
         {
             Destroy(lastBubble.gameObject);

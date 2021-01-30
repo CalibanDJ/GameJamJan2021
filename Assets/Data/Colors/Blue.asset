@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Color2
   rgb:
     serializedVersion: 2
-    rgba: 4294905088
+    rgba: 4294922240
   colorName: Bleu
