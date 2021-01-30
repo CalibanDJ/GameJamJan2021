@@ -20,24 +20,27 @@ public class ClientGenerator : Generator
     }
 
     private void assignWaitingLine(Client c) {
-        int WLineIdx = Random.Range(0, wLines.Length);
+        int WLineIdx = findSmallestLineIdx();
 
+        if(WLineIdx == -1) {
+            // All lines are full
+            return;
+        }
         c.setLine(wLines[WLineIdx]);
     }
 
-/*
+
     private int findSmallestLineIdx() {
         int idx = 0;
-        int min = wLines[0].Count;
+        int min = wLines[0].getClientCount();
         for(int i = 0; i < wLines.Length; ++i) {
-            if(min > wLines[i].Count()) {
+            if(min > wLines[i].getClientCount()) {
                 idx = i;
-                min = wLines[i].Count();
+                min = wLines[i].getClientCount();
             }
         }
-        return min == 500 ? -1 : idx;
+        return wLines[idx].isFull() ? -1 : idx;
     }
-    */
 
     public override void generate() {
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
