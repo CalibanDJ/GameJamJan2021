@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public class ClickSound : MonoBehaviour
 {
-
-    public string scene;
-
-
     public AudioClip sound;
 
     private Button button { get { return GetComponent<Button>(); } }
@@ -21,17 +17,12 @@ public class SceneLoader : MonoBehaviour
         gameObject.AddComponent<AudioSource>();
         source.clip = sound;
         source.playOnAwake = false;
-        
+
+        button.onClick.AddListener(() => PlaySound());
     }
 
     public void PlaySound()
     {
         source.PlayOneShot(sound);
-    }
-
-    public void loadScene()
-    {
-        PlaySound();
-        SceneManager.LoadScene(scene);        
     }
 }
