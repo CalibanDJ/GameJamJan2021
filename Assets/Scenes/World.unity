@@ -2984,10 +2984,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Data
       objectReference: {fileID: 0}
-    - target: {fileID: 3090609959445656829, guid: 135f0cab67e1eea45994513b0e6a1eb0, type: 3}
-      propertyPath: shapes.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 135f0cab67e1eea45994513b0e6a1eb0, type: 3}
 --- !u!1 &2020940050
