@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17c205e6744f1eb40bf97e16de4f2ccd, type: 3}
-  m_Name: Blue
-  m_EditorClassIdentifier: Assembly-CSharp::Color2
+  m_Name: Purple
+  m_EditorClassIdentifier: 
   rgb:
     serializedVersion: 2
-    rgba: 4294931258
-  colorName: Bleu
+    rgba: 4294901878
+  colorName: Violet

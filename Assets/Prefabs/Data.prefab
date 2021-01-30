@@ -48,6 +48,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7053bda88b6d2fe449f02b8befa2180a, type: 2}
   - {fileID: 11400000, guid: cda0f8fed10994548b9843d2c6e1abcb, type: 2}
   - {fileID: 11400000, guid: 54e854ef3f9498447a92a7cbba604796, type: 2}
+  - {fileID: 11400000, guid: df6cb85b5410e1d4e866e83ca2f5a852, type: 2}
+  - {fileID: 11400000, guid: 5834836fcf6a2af4aa3672ab560337d7, type: 2}
+  - {fileID: 11400000, guid: 0457676c7f6bbcb47ba95e25f95ecd90, type: 2}
   shapes:
   - {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
   - {fileID: 11400000, guid: 510c48c9f226e184fa19411864563fe8, type: 2}
@@ -65,3 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edb45c568898e64a856b7982ab15f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  comboText: {fileID: 0}
+  totalTimeRemainingText: {fileID: 0}
+  eventTimeRemainingText: {fileID: 0}
+  maxCombo: 10
