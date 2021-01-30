@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Item: DragDrop
 {
-    public SpriteRenderer renderer;
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private ColorAttr color;
     [SerializeField]
     private Shape shape;
 
+    private Client hoveredClient;
+
     protected override void Awake()
     {
-        if (renderer == null)
-            renderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (color != null)
             setColor(color);
         if (shape != null)
@@ -26,14 +29,14 @@ public class Item: DragDrop
     public void setColor(ColorAttr col)
     {
         color = col;
-        renderer.color = color.rgb;
+        spriteRenderer.color = color.rgb;
     }
 
     public void setShape(Shape shape)
     {
         this.shape = shape;
-        renderer.sprite = shape.sprite;
-        foreach (Collider2D col in renderer.GetComponents<Collider2D>())
+        spriteRenderer.sprite = shape.sprite;
+        foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
         {
             Destroy(col);
         }
@@ -43,5 +46,32 @@ public class Item: DragDrop
     public bool hasCharacteristic(ICharacteristic ch)
     {
         return color.identifyAs(ch) || shape.identifyAs(ch);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Client cl = collision.GetComponent<Client>();
+        if (cl != null)
+        {
+            hoveredClient = cl;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Client cl = collision.GetComponent<Client>();
+        if (cl != null && cl == hoveredClient)
+        {
+            hoveredClient = null;
+        }
+    }
+
+    public override void OnEndDrag(PointerEventData eventData)
+    {
+        base.OnEndDrag(eventData);
+        if (hoveredClient != null)
+        {
+            hoveredClient.onGive(this);
+        }
     }
 }

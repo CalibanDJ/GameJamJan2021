@@ -9,6 +9,11 @@ public class Shape : ScriptableObject, ICharacteristic
     public Sprite sprite;
     public string shapeName;
 
+    public string getName()
+    {
+        return shapeName;
+    }
+
     public virtual bool identifyAs(ICharacteristic ch)
     {
         return this == (UnityEngine.Object)ch;

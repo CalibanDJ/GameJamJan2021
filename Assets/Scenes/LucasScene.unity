@@ -486,6 +486,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 446771704077978095, guid: 2aed7c51a4c698647b7ab2980bf23956, type: 3}
+      propertyPath: desiredColor
+      value: 
+      objectReference: {fileID: 11400000, guid: 7053bda88b6d2fe449f02b8befa2180a, type: 2}
+    - target: {fileID: 446771704077978095, guid: 2aed7c51a4c698647b7ab2980bf23956, type: 3}
+      propertyPath: desiredShape
+      value: 
+      objectReference: {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
+    - target: {fileID: 446771704077978095, guid: 2aed7c51a4c698647b7ab2980bf23956, type: 3}
       propertyPath: dialogParent
       value: 
       objectReference: {fileID: 632932747}

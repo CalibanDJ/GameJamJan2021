@@ -7,5 +7,7 @@ using UnityEngine;
 
 public interface ICharacteristic
 {
+    string getName();
+
     bool identifyAs(ICharacteristic ch);
 }

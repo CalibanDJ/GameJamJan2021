@@ -9,6 +9,11 @@ public class ColorAttr: ScriptableObject, ICharacteristic
     public Color32 rgb;
     public string colorName;
 
+    public string getName()
+    {
+        return colorName;
+    }
+
     public bool identifyAs(ICharacteristic ch)
     {
         return this == (UnityEngine.Object)ch;

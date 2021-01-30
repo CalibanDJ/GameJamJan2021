@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using TMPro;
 
 public class DialogBubble : MonoBehaviour
 {
     public float time = 2.0f;
+    public TMP_Text text;
     private float timeLeft;
     private Client myClient;
 
@@ -32,6 +35,7 @@ public class DialogBubble : MonoBehaviour
     public void setClient(Client client)
     {
         myClient = client;
+        text.SetText(string.Join(" et ", client.desiredCharacteristics.Select(ch => ch.getName())));
     }
 
     public void rejectClient()
