@@ -19,9 +19,11 @@ public class Client : MonoBehaviour
 
     public IList<ICharacteristic> desiredCharacteristics;
     public float leaveTimer;
+    public bool active = false;
 
     public void Start()
     {
+        leaveTimer = leaveTime;
         if (cam == null)
             cam = Camera.main;
         desiredCharacteristics = new List<ICharacteristic>();
@@ -70,19 +72,19 @@ public class Client : MonoBehaviour
     public void setActive(bool active)
     {
         mouseCollider.enabled = active;
-        if (active)
-        {
-            leaveTimer = leaveTime;
-        }
+        this.active = active;
     }
 
     public void Update()
     {
-        leaveTimer -= Time.deltaTime;
-        if (leaveTimer <= 0.0f)
+        if (this.active)
         {
-            GameScore.Instance.addScore(0);
-            dispawn();
+            leaveTimer -= Time.deltaTime;
+            if (leaveTimer <= 0.0f)
+            {
+                GameScore.Instance.addScore(0);
+                dispawn();
+            }
         }
     }
 
