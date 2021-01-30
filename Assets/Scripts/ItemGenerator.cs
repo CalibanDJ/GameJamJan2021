@@ -20,6 +20,7 @@ public class ItemGenerator : MonoBehaviour
     private GameData data;
 
     public Item itemPrefab;
+    public GameObject ItemsGameObject;
 
 
     // Set a Timer between minSecond and minSecond + maxSecondDelay
@@ -32,6 +33,9 @@ public class ItemGenerator : MonoBehaviour
         int colorIdx = itemColorGen.generateNumber();
 
         Item i = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+        i.transform.SetParent(ItemsGameObject.transform);
+        i.transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
+        i.transform.GetComponent<SpriteRenderer>().sortingOrder = 5;
         i.setColor(data.colors[colorIdx]);
         i.setShape(data.shapes[shapeIdx]);
     }
