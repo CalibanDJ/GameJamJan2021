@@ -35,7 +35,7 @@ public class DialogBubble : MonoBehaviour
     public void setClient(Client client)
     {
         myClient = client;
-        text.SetText(string.Join(" et ", client.desiredCharacteristics.Select(ch => ch.getName())));
+        text.SetText(string.Join(" et ", client.desiredCharacteristics.Select(ch => "<b>" + ch.getName() + "</b>")));
     }
 
     public void rejectClient()

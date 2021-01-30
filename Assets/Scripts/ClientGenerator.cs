@@ -10,6 +10,7 @@ public class ClientGenerator : Generator
     public Client clientPrefab;
 
     public WaitingLine[] wLines;
+    public Sprite[] clientSprites;
 
     //Waves management
     public float rushHourDuration = 60; // in seconds
@@ -98,6 +99,7 @@ public class ClientGenerator : Generator
 
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
         c.dialogParent = dialogParent;
+        c.setSprite(clientSprites[Random.Range(0, clientSprites.Length)]);
         assignDesiredItem(c);
         assignWaitingLine(c, WLineIdx);
     }

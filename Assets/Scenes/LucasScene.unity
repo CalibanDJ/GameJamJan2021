@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 4425209332937549842, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 7d58cb31638e2e843b829807210c50c7, type: 3}
     - target: {fileID: 4425209332937549842, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -1271,7 +1271,7 @@ PrefabInstance:
     - target: {fileID: 4425209332937549842, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 7d58cb31638e2e843b829807210c50c7, type: 3}
     - target: {fileID: 4425209332937549842, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_SortingOrder
       value: 5
