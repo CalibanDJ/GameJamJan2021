@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    private int nbItems;
+    public int nbItems;
 
     private float initialTimerValue = 5;
     private float timerValue;
@@ -51,11 +51,11 @@ public class Floor : MonoBehaviour
         moveClock();
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnCollisionEnter2D(Collision2D other) {
         nbItems++;
     }
 
-    void OnTriggerExit(Collider other) {
+    void  OnCollisionExit2D(Collision2D other) {
         nbItems--;
     }
 }
