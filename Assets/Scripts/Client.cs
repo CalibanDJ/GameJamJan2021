@@ -45,14 +45,13 @@ public class Client : MonoBehaviour
 
     public void onGive(Item item)
     {
-        float score = desiredCharacteristics.Select((ch) => item.hasCharacteristic(ch)).Average(accepted => accepted ? 1.0f : 0.0f);
+        bool allCorrect = desiredCharacteristics.All((ch) => item.hasCharacteristic(ch));
+        int score = allCorrect ? desiredCharacteristics.Count : 0;
 
         Destroy(item.gameObject);
-        reject();
+        dispawn();
 
-        Debug.Log("Win score : " + score);
-
-        // TODO add score
+        GameScore.Instance.addScore(score);
     }
 
     public void setSprite(Sprite sprite)
@@ -72,6 +71,12 @@ public class Client : MonoBehaviour
     }
 
     public void reject()
+    {
+        //TODO
+        dispawn();
+    }
+
+    private void dispawn()
     {
         line.nextClient();
         if (lastBubble != null)
