@@ -15,7 +15,7 @@ public abstract class Generator : MonoBehaviour
 
     public float timeBeforeNextSpawn;
 
-    protected void moveClock() {
+    private void moveClock() {
         timeBeforeNextSpawn -= Time.deltaTime;
         if(timeBeforeNextSpawn <= 0) {
             this.generate();
@@ -38,18 +38,26 @@ public abstract class Generator : MonoBehaviour
         this.step = step;
     }
 
+    protected void setNewTimer(int minScd, int maxScd, int startcd, int step) {
+        prepareInstance(minScd, maxScd, startcd, step);
+        
+        itemSpawnRateGen = new GrowingRNG(maxSecondDelay, startTime, step); // First parameter + minSecond is the biggest interval between two spawns
+                                                                            // First - (Second parameter - 1) is the initial smallest interval between two spawns
+                                                                            // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
+        generateNewTimer();
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         itemSpawnRateGen = new GrowingRNG(maxSecondDelay, startTime, step); // First parameter + minSecond is the biggest interval between two spawns
-                                                                 // First - (Second parameter - 1) is the initial smallest interval between two spawns
-                                                                 // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
+                                                                            // First - (Second parameter - 1) is the initial smallest interval between two spawns
+                                                                            // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
         generateNewTimer();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         moveClock();
     }
