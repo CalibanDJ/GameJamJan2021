@@ -12,7 +12,6 @@ public class ItemGenerator : MonoBehaviour
     private GrowingRNG itemSpawnRateGen;
     // This should be atleast 1
     private int minSecond;
-    //
     private int maxSecondDelay;
     private float timeBeforeNextSpawn;
 
