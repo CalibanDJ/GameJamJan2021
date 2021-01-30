@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaitingLine : MonoBehaviour
 {
-    private IList<Client> clients;
+    private IList<Client> clients = new List<Client>();
 
     public float spaceBeetween = 10.0f;
 

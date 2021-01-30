@@ -65,6 +65,10 @@ public class GrowingRNG
     public void unlockLeveling() {
         _isLocked = false;
     }
+
+    public int getCurrentPoolSize() {
+        return _currentPoolSize;
+    }
 }
 
 }
