@@ -21,6 +21,13 @@ public class ClientGenerator : Generator
 
     public bool isRunning = true;
 
+    public static ClientGenerator Instance { get; private set; }
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+
     private void switchPeriod() {
         remainingDuration = inRushHour ? chillHourDuration : rushHourDuration;
         inRushHour = !inRushHour;
@@ -31,6 +38,12 @@ public class ClientGenerator : Generator
         if (remainingDuration <= 0) {
             endPeriod();
         }
+    }
+
+    public float getRemainingTimeOfGame()
+    {
+        return remainingDuration + (!inRushHour ? rushHourDuration : 0)
+            + (chillHourDuration + rushHourDuration) * ((nbRushHoursLeft - 1) < 0 ? 0 : (nbRushHoursLeft - 1));
     }
 
     private void setGeneratorForRushHour() {

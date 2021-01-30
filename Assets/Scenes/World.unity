@@ -1096,6 +1096,7 @@ GameObject:
   - component: {fileID: 503485232}
   - component: {fileID: 503485231}
   - component: {fileID: 503485234}
+  - component: {fileID: 503485235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1184,6 +1185,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &503485235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503485230}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd914b5f3ac78448a47e58cec81e6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airplane: {fileID: 8300000, guid: dbb17b055b585604b916ac437dfc21d8, type: 3}
+  crow: {fileID: 8300000, guid: 97675ae0673ff3445b4b697106779b1a, type: 3}
+  music: {fileID: 8300000, guid: 97675ae0673ff3445b4b697106779b1a, type: 3}
 --- !u!1 &538959627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,6 +2969,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d9ff9939bb8dd324ab6fe759f611a5c8, type: 3}
   - {fileID: 21300000, guid: 8dff79ca3c1f6c44a854714325005ed3, type: 3}
   - {fileID: 21300000, guid: 0c06836107d554c4598d7685deb6a30a, type: 3}
+  rushHourDuration: 60
+  chillHourDuration: 20
+  nbRushHoursLeft: 3
+  remainingDuration: 0
+  inRushHour: 0
+  isRunning: 1
 --- !u!4 &2107669306
 Transform:
   m_ObjectHideFlags: 0
