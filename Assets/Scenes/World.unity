@@ -150,6 +150,30 @@ PrefabInstance:
       propertyPath: shape
       value: 
       objectReference: {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 4425209332937549847, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1152,6 +1176,30 @@ PrefabInstance:
       propertyPath: shape
       value: 
       objectReference: {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425209332937549845, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 4425209332937549847, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1929,6 +1977,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1027012391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027012392}
+  m_Layer: 0
+  m_Name: GameData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027012392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027012391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1947675446}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073237437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,6 +2692,7 @@ Transform:
   - {fileID: 1177202903}
   - {fileID: 570826413}
   - {fileID: 503485233}
+  - {fileID: 1027012392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
