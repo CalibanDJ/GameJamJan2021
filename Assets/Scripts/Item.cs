@@ -13,6 +13,9 @@ public class Item: DragDrop
     [SerializeField]
     private Shape shape;
 
+    private ColorAttr oldColor;
+    private Shape oldShape;
+
     private Client hoveredClient;
 
     protected override void Awake()
@@ -28,19 +31,46 @@ public class Item: DragDrop
 
     public void setColor(ColorAttr col)
     {
+        if (col == oldColor) return;
+        oldColor = col;
+
         color = col;
         spriteRenderer.color = color.rgb;
     }
 
     public void setShape(Shape shape)
     {
+        if (shape == oldShape) return;
+        oldShape = shape;
+
         this.shape = shape;
         spriteRenderer.sprite = shape.sprite;
         foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
         {
-            Destroy(col);
+            if (Application.isPlaying)
+            {
+                Destroy(col);
+            }
+            else
+            {
+                UnityEditor.EditorApplication.delayCall += () =>
+                {
+                    DestroyImmediate(col);
+                };
+            }
         }
-        gameObject.AddComponent<PolygonCollider2D>();
+
+        if (Application.isPlaying)
+        {
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
+        else
+        {
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+                gameObject.AddComponent<PolygonCollider2D>();
+            };
+        }
     }
 
     public bool hasCharacteristic(ICharacteristic ch)
@@ -73,5 +103,15 @@ public class Item: DragDrop
         {
             hoveredClient.onGive(this);
         }
+    }
+
+    public void OnValidate()
+    {
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (color != null)
+            setColor(color);
+        if (shape != null)
+            setShape(shape);
     }
 }
