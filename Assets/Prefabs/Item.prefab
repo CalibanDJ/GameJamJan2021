@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4425209332937549843}
   - component: {fileID: 4425209332937549844}
   - component: {fileID: 4425209332937549845}
-  - component: {fileID: 4425209332937549846}
+  - component: {fileID: 38595839}
   m_Layer: 6
   m_Name: Item
   m_TagString: Untagged
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7320076aa12a8954b82be840e30536d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerName: Item
   cam: {fileID: 0}
   mouseJoint: {fileID: 0}
   objectCollider: {fileID: 0}
@@ -148,8 +149,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!233 &4425209332937549846
-HingeJoint2D:
+--- !u!257 &38595839
+TargetJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,18 +158,13 @@ HingeJoint2D:
   m_GameObject: {fileID: 4425209332937549848}
   m_Enabled: 0
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 904.0596, y: 528.65674}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+  m_Target: {x: 0, y: 0}
+  m_AutoConfigureTarget: 0
+  m_MaxForce: 10000
+  m_DampingRatio: 1
+  m_Frequency: 10

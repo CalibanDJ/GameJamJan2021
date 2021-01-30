@@ -6,38 +6,39 @@ using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public string layerName;
     public Camera cam;
-    public HingeJoint2D mouseJoint;
-    public Collider2D objectCollider;
+    public TargetJoint2D mouseJoint;
+
+    private int normalLayer;
+    private int movingLayer;
 
     private void Awake()
     {
         if (mouseJoint == null)
-            mouseJoint = GetComponentInChildren<HingeJoint2D>();
-        if (objectCollider == null)
-            objectCollider = GetComponentInChildren<Collider2D>();
+            mouseJoint = GetComponentInChildren<TargetJoint2D>();
         mouseJoint.enabled = false;
+        normalLayer = LayerMask.NameToLayer(layerName);
+        movingLayer = LayerMask.NameToLayer(layerName + "Move");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
-        mouseJoint.enabled = true;
         mouseJoint.anchor = transform.InverseTransformPoint(eventData.pointerPressRaycast.worldPosition);
-        mouseJoint.connectedAnchor = cam.ScreenToWorldPoint(eventData.position);
-        objectCollider.enabled = false;
+        mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
+        mouseJoint.enabled = true;
+        gameObject.layer = movingLayer;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        mouseJoint.connectedAnchor = cam.ScreenToWorldPoint(eventData.position);
+        mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         mouseJoint.enabled = false;
-        objectCollider.enabled = true;
+        gameObject.layer = normalLayer;
     }
 }
 

@@ -14,8 +14,8 @@ TagManager:
   - Item
   - Shelf
   - Wall
-  - 
-  - 
+  - ItemMove
+  - ClickZone
   - 
   - 
   - 

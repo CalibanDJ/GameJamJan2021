@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 446771704077978095}
   - component: {fileID: 8922114856535065574}
   - component: {fileID: 4177765275396008837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Client
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogPrefab: {fileID: 1182850550210412207, guid: f58c91f8899c0194fbc3a160648327d9, type: 3}
+  dialogParent: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!212 &8922114856535065574
 SpriteRenderer:
   m_ObjectHideFlags: 0
