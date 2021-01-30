@@ -11,6 +11,7 @@ public class GameScore : MonoBehaviour
 
     public int Score { get; private set; }
     public int Combo { get; private set; }
+    public float TimeLeft { get; private set; }
 
     public static GameScore Instance { get; private set; }
 
