@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -45,10 +44,13 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
+        // Reset phisics
         mouseJoint.enabled = false;
         gameObject.layer = normalLayer;
+
+        // Reduce angular speed
         itemBody.angularVelocity /= 4;
 
         // Limit max release speed
