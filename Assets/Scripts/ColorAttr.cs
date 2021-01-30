@@ -11,6 +11,6 @@ public class ColorAttr: ScriptableObject, ICharacteristic
 
     public bool identifyAs(ICharacteristic ch)
     {
-        return this == ch;
+        return this == (UnityEngine.Object)ch;
     }
 }

@@ -11,6 +11,6 @@ public class Shape : ScriptableObject, ICharacteristic
 
     public virtual bool identifyAs(ICharacteristic ch)
     {
-        return this == ch;
+        return this == (UnityEngine.Object)ch;
     }
 }
