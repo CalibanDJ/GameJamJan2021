@@ -878,7 +878,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136075259
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 5108601841118324724, guid: 29a918420fdc13d41b373cd0ba7603e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1479,7 +1479,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136075259
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 5108601841118324724, guid: 29a918420fdc13d41b373cd0ba7603e8, type: 3}
   m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_FlipX: 0
@@ -2685,6 +2685,14 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1786489535}
+    - target: {fileID: 1078442782, guid: 135f0cab67e1eea45994513b0e6a1eb0, type: 3}
+      propertyPath: eventTimeRemainingText
+      value: 
+      objectReference: {fileID: 3981341454472239843}
+    - target: {fileID: 1078442782, guid: 135f0cab67e1eea45994513b0e6a1eb0, type: 3}
+      propertyPath: totalTimeRemainingText
+      value: 
+      objectReference: {fileID: 3981341454472239844}
     - target: {fileID: 3090609959445656826, guid: 135f0cab67e1eea45994513b0e6a1eb0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3022,6 +3030,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2032147880}
     m_Modifications:
+    - target: {fileID: 3981341452696551276, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981341452958527580, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981341452958527580, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981341453155932235, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981341453155932235, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981341453325973948, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3981341453926223622, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -3112,3 +3144,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+--- !u!114 &3981341454472239843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8373804758864736956, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+  m_PrefabInstance: {fileID: 3981341454472239842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3981341454472239844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1726199693827109316, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
+  m_PrefabInstance: {fileID: 3981341454472239842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
