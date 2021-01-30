@@ -45,7 +45,7 @@ public class ItemGenerator : Generator
     // Start is called before the first frame update
     protected override void Start()
     {
-        prepareInstance(0, 2, 0, 1);
+        prepareInstance(0, 3, 0, 1);
         base.Start();
 
         data = GameData.Instance;
