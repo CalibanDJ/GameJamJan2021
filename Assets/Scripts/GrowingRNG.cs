@@ -46,12 +46,18 @@ public class GrowingRNG
         _nbGenerationToGrow--;
         if (_nbGenerationToGrow <= 0) {
             forceGrow();
+            Debug.Log("Level up ! generator currentPoolSize : " + _currentPoolSize + "\n");
         }
     }
 
     public void forceGrow() {
         _currentPoolSize = _currentPoolSize + _growthStep > _poolSize ? _poolSize : _currentPoolSize + _growthStep;
         _nbGenerationToGrow = _growthThreshold;
+
+        if (_currentPoolSize == _poolSize) {
+            Debug.Log("Generateur a atteint le max a " + _currentPoolSize + "\n");
+            this.lockLeveling();
+        }
     }
 
     public bool getIsLocked() {

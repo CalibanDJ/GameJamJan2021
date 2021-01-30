@@ -24,6 +24,20 @@ public class ClientGenerator : Generator
         wLines[WLineIdx].addClient(c);
     }
 
+/*
+    private int findSmallestLineIdx() {
+        int idx = 0;
+        int min = wLines[0].Count;
+        for(int i = 0; i < wLines.Length; ++i) {
+            if(min > wLines[i].Count()) {
+                idx = i;
+                min = wLines[i].Count();
+            }
+        }
+        return min == 500 ? -1 : idx;
+    }
+    */
+
     public override void generate() {
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
         assignDesiredItem(c);

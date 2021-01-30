@@ -5,13 +5,15 @@ using ItemGen;
 
 public abstract class Generator : MonoBehaviour
 {
-
     // Spawn rate
-    private GrowingRNG itemSpawnRateGen;
+    public GrowingRNG itemSpawnRateGen;
     // This should be atleast 1
-    private int minSecond;
-    private int maxSecondDelay;
-    private float timeBeforeNextSpawn;
+    private int minSecond = 0;
+    private int maxSecondDelay = 6;
+    private int step = 2;
+    private int startTime = 0;
+
+    public float timeBeforeNextSpawn;
 
     protected void moveClock() {
         timeBeforeNextSpawn -= Time.deltaTime;
@@ -28,13 +30,19 @@ public abstract class Generator : MonoBehaviour
 
     public abstract void generate();
 
+    protected void prepareInstance(int minScd, int maxScd, int startcd, int step) {
+        // DEFAULT Parameter :
+        minSecond = minScd;
+        maxSecondDelay = maxScd;
+        startTime = startcd;
+        this.step = step;
+    }
+
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        // DEFAULT Parameter :
-        minSecond = 1;
-        maxSecondDelay = 10;
-        itemSpawnRateGen = new GrowingRNG(maxSecondDelay, 4, 1); // First parameter + minSecond is the biggest interval between two spawns
+        itemSpawnRateGen = new GrowingRNG(maxSecondDelay, startTime, step); // First parameter + minSecond is the biggest interval between two spawns
                                                                  // First - (Second parameter - 1) is the initial smallest interval between two spawns
                                                                  // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
         generateNewTimer();
