@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
+    public float leaveTime = 10.0f;
     public DialogBubble dialogPrefab;
     public Transform dialogParent;
     public Camera cam;
@@ -17,6 +18,7 @@ public class Client : MonoBehaviour
     public ColorAttr desiredColor;
 
     public IList<ICharacteristic> desiredCharacteristics;
+    public float leaveTimer;
 
     public void Start()
     {
@@ -45,7 +47,7 @@ public class Client : MonoBehaviour
 
     public void onGive(Item item)
     {
-        bool allCorrect = desiredCharacteristics.All((ch) => item.hasCharacteristic(ch));
+        bool allCorrect = desiredCharacteristics.All(ch => item.hasCharacteristic(ch));
         int score = allCorrect ? desiredCharacteristics.Count : 0;
 
         Destroy(item.gameObject);
@@ -68,11 +70,32 @@ public class Client : MonoBehaviour
     public void setActive(bool active)
     {
         mouseCollider.enabled = active;
+        if (active)
+        {
+            leaveTimer = leaveTime;
+        }
+    }
+
+    public void Update()
+    {
+        leaveTimer -= Time.deltaTime;
+        if (leaveTimer <= 0.0f)
+        {
+            GameScore.Instance.addScore(0);
+            dispawn();
+        }
     }
 
     public void reject()
     {
-        //TODO
+        Transform itemParent = ItemGenerator.Instance.ItemsGameObject.transform;
+        bool itemPresent = itemParent.GetComponentsInChildren<Item>().Any(item => desiredCharacteristics.All(ch => item.hasCharacteristic(ch)));
+
+        if (itemPresent)
+        {
+            GameScore.Instance.addScore(0);
+        }
+        
         dispawn();
     }
 

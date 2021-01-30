@@ -15,6 +15,13 @@ public class ItemGenerator : Generator
     public Item itemPrefab;
     public GameObject ItemsGameObject;
 
+    public static ItemGenerator Instance { get; private set; }
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+
     public override void generate() {
         int shapeIdx = itemShapeGen.generateNumber();
         int colorIdx = itemColorGen.generateNumber();

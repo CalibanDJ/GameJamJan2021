@@ -2798,7 +2798,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 503485232}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2978,7 +2978,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3981341453310253925, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3981341453926223622, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
       propertyPath: m_Name
@@ -3070,7 +3070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3981341454028657860, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 3981341454028657860, guid: d9e4fd48df5860242a7a302c48a92de0, type: 3}
       propertyPath: m_AnchoredPosition.y
