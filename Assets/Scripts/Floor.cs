@@ -31,7 +31,7 @@ public class Floor : MonoBehaviour
         int roll = Random.Range(0, oddsScale);
 
         if( roll < odds) {
-            // SUMMON THE JANITOR
+            Janitor.Instance.setPreparingToAttack();
         }
     }
 
@@ -48,7 +48,10 @@ public class Floor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveClock();
+        if (!Janitor.Instance.isTriggered)
+        {
+            moveClock();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other) {
