@@ -266,10 +266,8 @@ PolygonCollider2D:
     - - {x: -0.53999996, y: -0.39999998}
       - {x: 0.02, y: 0.52}
       - {x: 0.12, y: 0.64}
-      - {x: 0.48, y: 0.59999996}
-      - {x: 0.53999996, y: 0.5}
-      - {x: 0.53999996, y: 0.08}
-      - {x: 0.45999998, y: -0.39999998}
+      - {x: 0.5, y: 0.56}
+      - {x: 0.44, y: -0.35999998}
       - {x: 0.29999998, y: -0.64}
       - {x: 0.17999999, y: -0.64}
 --- !u!1001 &78237349
@@ -502,6 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affbc59f7185f8e48b6b6e1d11bfa045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeNextSpawn: 0
   itemPrefab: {fileID: 4425209332937549843, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
   ItemsGameObject: {fileID: 475652637}
 --- !u!1 &275530326
@@ -1397,10 +1396,8 @@ PolygonCollider2D:
     - - {x: -0.53999996, y: -0.39999998}
       - {x: 0.02, y: 0.52}
       - {x: 0.12, y: 0.64}
-      - {x: 0.48, y: 0.59999996}
-      - {x: 0.53999996, y: 0.5}
-      - {x: 0.53999996, y: 0.08}
-      - {x: 0.45999998, y: -0.39999998}
+      - {x: 0.5, y: 0.56}
+      - {x: 0.44, y: -0.35999998}
       - {x: 0.29999998, y: -0.64}
       - {x: 0.17999999, y: -0.64}
 --- !u!1 &538959627
@@ -2490,12 +2487,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5c1b05f6a36b34ebeb5fe35840c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeNextSpawn: 0
   itemGen: {fileID: 255244411}
   dialogParent: {fileID: 373051376}
   clientPrefab: {fileID: 446771704077978095, guid: 2aed7c51a4c698647b7ab2980bf23956, type: 3}
   wLines:
   - {fileID: 767958156}
   - {fileID: 1955806545}
+  clientSprites: []
+  rushHourDuration: 60
+  chillHourDuration: 20
+  nbRushHoursLeft: 3
+  remainingDuration: 0
+  inRushHour: 0
+  isRunning: 1
 --- !u!1 &1787540478
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,6 +2857,7 @@ GameObject:
   - component: {fileID: 1947675447}
   - component: {fileID: 1947675446}
   - component: {fileID: 1947675448}
+  - component: {fileID: 1947675449}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2917,6 +2923,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1947675449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947675445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1001 &1955806543
 PrefabInstance:
   m_ObjectHideFlags: 0
