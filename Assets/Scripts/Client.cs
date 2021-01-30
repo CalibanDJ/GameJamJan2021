@@ -9,6 +9,7 @@ public class Client : MonoBehaviour
     public Transform dialogParent;
     public Camera cam;
     private DialogBubble lastBubble;
+    private WaitingLine line;
 
     public Shape desiredShape;
     public ColorAttr desiredColor;
@@ -50,8 +51,15 @@ public class Client : MonoBehaviour
         // TODO add score
     }
 
+    public void setLine(WaitingLine line)
+    {
+        this.line = line;
+        this.line.addClient(this);
+    }
+
     public void reject()
     {
+        line.nextClient();
         if (lastBubble != null)
         {
             Destroy(lastBubble.gameObject);
