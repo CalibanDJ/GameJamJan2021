@@ -10,6 +10,60 @@ public class ClientGenerator : Generator
     public Client clientPrefab;
 
     public WaitingLine[] wLines;
+    public Sprite[] clientSprites;
+
+    //Waves management
+    public float rushHourDuration = 60; // in seconds
+    public float chillHourDuration = 20; // in seconds
+    public int nbRushHoursLeft = 3;
+    public float remainingDuration;
+    public bool inRushHour;
+
+    public bool isRunning = true;
+
+    private void switchPeriod() {
+        remainingDuration = inRushHour ? chillHourDuration : rushHourDuration;
+        inRushHour = !inRushHour;
+    }
+
+    private void moveClock() {
+        remainingDuration -= Time.deltaTime;
+        if (remainingDuration <= 0) {
+            endPeriod();
+        }
+    }
+
+    private void setGeneratorForRushHour() {
+        base.setNewTimer(0, 3, 0, 1); // un mec toutes les 3 secondes au début puis rnged avec augmentation de 1
+
+        Debug.Log("Rush Hour incoming");
+    }
+
+    private void setGeneratorForChillHour() {
+        base.setNewTimer(5, 11, 0, 1); // Un mec toutes les 5 a 15 secondes 
+        itemSpawnRateGen.lockLeveling(); // Empeche le leveling du generateur
+
+        Debug.Log("Chill Hour incoming");
+    }
+
+    private void endPeriod() {
+        if (inRushHour) {
+            nbRushHoursLeft--;
+            // FOUTRE GENERATEUR PR CHILL HOUR
+            setGeneratorForChillHour();
+        }
+        else {
+            // FOUTRE GENERATEUR PR RUSH HOUR
+            setGeneratorForRushHour();
+        }
+
+        if(nbRushHoursLeft <= 0) {
+            // FIN DU JEU
+            isRunning = false;
+            return;
+        }
+        switchPeriod();
+    }
 
     private void assignDesiredItem(Client c) {
         int shapeIdx = Random.Range(0, itemGen.getShapePoolSize());
@@ -19,22 +73,55 @@ public class ClientGenerator : Generator
         c.desiredColor = itemGen.getGameData().colors[colorIdx];
     }
 
-    private void assignWaitingLine(Client c) {
-        int WLineIdx = Random.Range(0, wLines.Length);
+    private void assignWaitingLine(Client c, int idx) {
+        c.setLine(wLines[idx]);
+    }
 
-        c.setLine(wLines[WLineIdx]);
+
+    private int findSmallestLineIdx() {
+        int idx = 0;
+        int min = wLines[0].getClientCount();
+        for(int i = 0; i < wLines.Length; ++i) {
+            if(min > wLines[i].getClientCount()) {
+                idx = i;
+                min = wLines[i].getClientCount();
+            }
+        }
+        return wLines[idx].isFull() ? -1 : idx;
     }
 
     public override void generate() {
+        int WLineIdx = findSmallestLineIdx();
+        if(WLineIdx == -1) {
+            // All lines are full
+            return;
+        }
+
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
         c.dialogParent = dialogParent;
+        c.setSprite(clientSprites[Random.Range(0, clientSprites.Length)]);
         assignDesiredItem(c);
-        assignWaitingLine(c);
+        assignWaitingLine(c, WLineIdx);
     }
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        prepareInstance(5, 11, 0, 1);
         base.Start();
+        itemSpawnRateGen.lockLeveling();
+
+        //Chill hour setting for starter
+        inRushHour = false;
+        remainingDuration = chillHourDuration;
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        if (isRunning) {
+            base.Update();
+            this.moveClock();
+        }
     }
 }
