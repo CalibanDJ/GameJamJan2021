@@ -4,41 +4,40 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private Canvas canvas;
-
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+    public Camera cam;
+    public HingeJoint2D mouseJoint;
+    public Collider2D objectCollider;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        if (mouseJoint == null)
+            mouseJoint = GetComponentInChildren<HingeJoint2D>();
+        if (objectCollider == null)
+            objectCollider = GetComponentInChildren<Collider2D>();
+        mouseJoint.enabled = false;
     }
 
-    public void OnBeginDrag(PointerEventData eventDate)
+    public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
-        canvasGroup.alpha = .6f;
-        canvasGroup.blocksRaycasts = false;
+        mouseJoint.enabled = true;
+        mouseJoint.anchor = transform.InverseTransformPoint(eventData.pointerPressRaycast.worldPosition);
+        mouseJoint.connectedAnchor = cam.ScreenToWorldPoint(eventData.position);
+        objectCollider.enabled = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        mouseJoint.connectedAnchor = cam.ScreenToWorldPoint(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerDown");
+        mouseJoint.enabled = false;
+        objectCollider.enabled = true;
     }
 }
 
