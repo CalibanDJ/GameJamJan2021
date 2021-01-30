@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,11 @@ public class Client : MonoBehaviour
         Debug.Log("Win score : " + score);
 
         // TODO add score
+    }
+
+    public void setSprite(Sprite sprite)
+    {
+        GetComponentInChildren<SpriteRenderer>().sprite = sprite;
     }
 
     public void setLine(WaitingLine line)

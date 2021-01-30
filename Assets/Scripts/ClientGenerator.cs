@@ -10,6 +10,7 @@ public class ClientGenerator : Generator
     public Client clientPrefab;
 
     public WaitingLine[] wLines;
+    public Sprite[] clientSprites;
 
     private void assignDesiredItem(Client c) {
         int shapeIdx = Random.Range(0, itemGen.getShapePoolSize());
@@ -45,6 +46,7 @@ public class ClientGenerator : Generator
     public override void generate() {
         Client c = Instantiate(clientPrefab, new Vector2(0, 0), Quaternion.identity);
         c.dialogParent = dialogParent;
+        c.setSprite(clientSprites[Random.Range(0, clientSprites.Length)]);
         assignDesiredItem(c);
         assignWaitingLine(c);
     }
