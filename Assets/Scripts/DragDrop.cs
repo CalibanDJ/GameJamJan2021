@@ -9,17 +9,27 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public string layerName;
     public Camera cam;
     public TargetJoint2D mouseJoint;
+    public Rigidbody2D itemBody;
+    public float releaseMaxSpeed = 100.0f;
 
     private int normalLayer;
     private int movingLayer;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (mouseJoint == null)
             mouseJoint = GetComponentInChildren<TargetJoint2D>();
+        if (itemBody == null)
+            itemBody = GetComponentInChildren<Rigidbody2D>();
         mouseJoint.enabled = false;
         normalLayer = LayerMask.NameToLayer(layerName);
         movingLayer = LayerMask.NameToLayer(layerName + "Move");
+    }
+
+    public void Start()
+    {
+        if (cam == null)
+            cam = Camera.main;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -39,6 +49,12 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         mouseJoint.enabled = false;
         gameObject.layer = normalLayer;
+        itemBody.angularVelocity /= 4;
+
+        // Limit max release speed
+        float mag = itemBody.velocity.magnitude;
+        if (mag > releaseMaxSpeed)
+            itemBody.velocity = itemBody.velocity / mag * releaseMaxSpeed;
     }
 }
 

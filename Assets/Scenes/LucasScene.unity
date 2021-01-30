@@ -167,7 +167,6 @@ GameObject:
   - component: {fileID: 320542562}
   - component: {fileID: 320542565}
   - component: {fileID: 320542564}
-  - component: {fileID: 320542563}
   m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
@@ -189,27 +188,6 @@ Transform:
   m_Father: {fileID: 89987762}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &320542563
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320542561}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &320542564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -603,7 +581,6 @@ GameObject:
   - component: {fileID: 1181694428}
   - component: {fileID: 1181694431}
   - component: {fileID: 1181694430}
-  - component: {fileID: 1181694429}
   m_Layer: 7
   m_Name: Shelf
   m_TagString: Untagged
@@ -625,27 +602,6 @@ Transform:
   m_Father: {fileID: 89987762}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1181694429
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181694427}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1181694430
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -882,6 +838,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4425209332937549843, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: color
+      value: 
+      objectReference: {fileID: 11400000, guid: cda0f8fed10994548b9843d2c6e1abcb, type: 2}
+    - target: {fileID: 4425209332937549843, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
+      propertyPath: shape
+      value: 
+      objectReference: {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
     - target: {fileID: 4425209332937549847, guid: 561cda8dc27c07f4d967836f3207d0a6, type: 3}
       propertyPath: m_RootOrder
       value: 0

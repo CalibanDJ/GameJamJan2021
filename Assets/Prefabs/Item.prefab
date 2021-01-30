@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4425209332937549842}
   - component: {fileID: 4425209332937549843}
   - component: {fileID: 4425209332937549844}
-  - component: {fileID: 4425209332937549845}
   - component: {fileID: 38595839}
+  - component: {fileID: 4425209332937549845}
   m_Layer: 6
   m_Name: Item
   m_TagString: Untagged
@@ -101,7 +101,11 @@ MonoBehaviour:
   layerName: Item
   cam: {fileID: 0}
   mouseJoint: {fileID: 0}
-  objectCollider: {fileID: 0}
+  itemBody: {fileID: 0}
+  releaseMaxSpeed: 20
+  renderer: {fileID: 0}
+  color: {fileID: 0}
+  shape: {fileID: 0}
 --- !u!50 &4425209332937549844
 Rigidbody2D:
   serializedVersion: 4
@@ -114,15 +118,34 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!257 &38595839
+TargetJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425209332937549848}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_Anchor: {x: 0, y: 0}
+  m_Target: {x: 0, y: 0}
+  m_AutoConfigureTarget: 0
+  m_MaxForce: 10000
+  m_DampingRatio: 1
+  m_Frequency: 10
 --- !u!61 &4425209332937549845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,22 +172,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!257 &38595839
-TargetJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4425209332937549848}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 1
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 0, y: 0}
-  m_AutoConfigureTarget: 0
-  m_MaxForce: 10000
-  m_DampingRatio: 1
-  m_Frequency: 10
