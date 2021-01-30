@@ -6,13 +6,28 @@ public class WaitingLine : MonoBehaviour
 {
     private IList<Client> clients = new List<Client>();
 
-    public float spaceBeetween = 10.0f;
+    public int maxClients = 5;
+    public float spaceBeetween = 1.0f;
+    public float xRand = 1.0f;
 
     public void addClient(Client cl)
     {
-        clients.Add(cl);
         cl.transform.SetParent(transform);
-        cl.transform.position = new Vector3(transform.position.x + Random.Range(-10.0f, 10.0f), clients.Count > 0 ? clients[clients.Count - 1].transform.position.y + spaceBeetween : transform.position.y, 0.0f);
+        bool first = clients.Count == 0;
+        cl.transform.position = new Vector3(transform.position.x + Random.Range(-xRand, xRand), first ? transform.position.y : clients[clients.Count - 1].transform.position.y + spaceBeetween, first ? transform.position.z : clients[clients.Count - 1].transform.position.z + 0.1f);
+
+        cl.setActive(first);
+        clients.Add(cl);
+    }
+
+    public int getClientCount()
+    {
+        return clients.Count;
+    }
+
+    public bool isFull()
+    {
+        return clients.Count >= maxClients;
     }
 
     public void nextClient()
@@ -22,6 +37,11 @@ public class WaitingLine : MonoBehaviour
         {
             Vector3 oldPos = cl.transform.position;
             cl.transform.position = oldPos + Vector3.down * spaceBeetween;
+        }
+
+        if (clients.Count > 0)
+        {
+            clients[0].setActive(true);
         }
     }
 }
