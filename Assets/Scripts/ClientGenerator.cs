@@ -16,7 +16,7 @@ public class ClientGenerator : Generator
     //Waves management
     public float rushHourDuration = 60; // in seconds
     public float chillHourDuration = 20; // in seconds
-    public int nbRushHoursLeft = 3;
+    public int nbRushHoursLeft = 4;
     public float remainingDuration;
     public bool inRushHour;
 

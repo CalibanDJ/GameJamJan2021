@@ -30,7 +30,11 @@ public class ItemGenerator : Generator
 
         Item i = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
         i.transform.SetParent(ItemsGameObject.transform);
-        i.transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
+
+        int randX = Random.Range(0, 3);
+        int randY = Random.Range(0, 3);
+        int randAngles = Random.Range(0, 360);
+        i.transform.SetPositionAndRotation(new Vector3(transform.position.x - randX, transform.position.y + randY, 1), Quaternion.AngleAxis(randAngles, Vector3.back));
         i.transform.GetComponent<SpriteRenderer>().sortingOrder = 5;
         i.setColor(data.colors[colorIdx]);
         i.setShape(data.shapes[shapeIdx]);
