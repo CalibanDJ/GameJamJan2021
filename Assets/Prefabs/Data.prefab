@@ -54,8 +54,9 @@ MonoBehaviour:
   shapes:
   - {fileID: 11400000, guid: eaacb5fea2ae1ee48968d0ad66c798f3, type: 2}
   - {fileID: 11400000, guid: eb635942e73712b4ba2b07302df27a80, type: 2}
-  - {fileID: 11400000, guid: 510c48c9f226e184fa19411864563fe8, type: 2}
+  - {fileID: 11400000, guid: 871dfc3e557c8934483032c339f9a85b, type: 2}
   - {fileID: 11400000, guid: 040b53c7b05cb8743b967c65300ee703, type: 2}
+  - {fileID: 11400000, guid: 510c48c9f226e184fa19411864563fe8, type: 2}
 --- !u!114 &1078442782
 MonoBehaviour:
   m_ObjectHideFlags: 0
