@@ -5,13 +5,18 @@ using UnityEngine;
 
 public static class LeaderBoard
 {
-    public struct BoardItem
+    public struct BoardItem: IComparable<BoardItem>
     {
         public int score { get; internal set; }
         public string name { get; internal set; }
+
+        public int CompareTo(BoardItem other)
+        {
+            return other.score.CompareTo(score);
+        }
     }
 
-    private static List<BoardItem> _leaderBoard = new List<BoardItem>();
+    private static List<BoardItem> _leaderBoard;
     private static List<BoardItem> safeLeaderBoard
     {
         get
@@ -53,7 +58,7 @@ public static class LeaderBoard
         {
             int score = PlayerPrefs.GetInt("LeaderBoard_Score_" + i);
             string name = PlayerPrefs.GetString("LeaderBoard_Name_" + i);
-            _leaderBoard[i] = new BoardItem { score = score, name = name };
+            _leaderBoard.Add(new BoardItem { score = score, name = name });
         }
     }
 }

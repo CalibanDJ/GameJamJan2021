@@ -11,6 +11,23 @@ public class MenuLeaderBoard : MonoBehaviour
     public GameObject closedObj;
     private bool open = false;
 
+    public void Start()
+    {
+        while (scoreTable.childCount > 1)
+        {
+            Destroy(scoreTable.GetChild(1));
+        }
+
+        int rank = 1;
+        foreach (var sc in LeaderBoard.LeaderBoardList)
+        {
+            ScoreEntry entry = Instantiate(scorePrefab, scoreTable);
+            entry.nameVal.SetText(rank + ". " + sc.name + " " + sc.score.ToString());
+            //entry.score.SetText(sc.score.ToString());
+            rank++;
+        }
+    }
+
     public void OpenLeaderBoard()
     {
         open = !open;
@@ -25,19 +42,5 @@ public class MenuLeaderBoard : MonoBehaviour
     public void endAnim()
     {
         openObj.SetActive(open);
-        if (open)
-        {
-            while (scoreTable.childCount > 1)
-            {
-                Destroy(scoreTable.GetChild(1));
-            }
-
-            foreach (var sc in LeaderBoard.LeaderBoardList)
-            {
-                ScoreEntry entry = Instantiate(scorePrefab, scoreTable);
-                entry.name.SetText(sc.name);
-                entry.score.SetText(sc.score.ToString());
-            }
-        }
     }
 }
