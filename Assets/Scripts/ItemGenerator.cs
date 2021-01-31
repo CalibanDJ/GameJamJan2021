@@ -31,7 +31,7 @@ public class ItemGenerator : Generator
         Item i = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
         i.transform.SetParent(ItemsGameObject.transform);
 
-        float randX = Random.Range(-1.0f, 2.0f);
+        float randX = Random.Range(0.0f, 2.0f);
         int randY = Random.Range(0, 3);
         int randAngles = Random.Range(0, 360);
         i.transform.SetPositionAndRotation(new Vector3(transform.position.x + randX, transform.position.y + randY, 1), Quaternion.AngleAxis(randAngles, Vector3.back));
