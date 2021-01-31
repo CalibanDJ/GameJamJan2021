@@ -112,6 +112,7 @@ public class Client : MonoBehaviour
         if (itemPresent)
         {
             GameScore.Instance.addScore(0);
+            WorldSound.Instance.playWrongItem();
         }
         
         dispawn();

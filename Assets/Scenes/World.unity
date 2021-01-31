@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: m_Motor.m_MaximumMotorForce
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 5386544954636218781, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.36
+      objectReference: {fileID: 0}
     - target: {fileID: 6588578837736016808, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
       propertyPath: m_FlipX
       value: 1
