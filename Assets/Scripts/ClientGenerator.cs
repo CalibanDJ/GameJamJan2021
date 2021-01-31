@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClientGenerator : Generator
 {
@@ -47,13 +48,13 @@ public class ClientGenerator : Generator
     }
 
     private void setGeneratorForRushHour() {
-        base.setNewTimer(0, 3, 0, 1); // un mec toutes les 3 secondes au début puis rnged avec augmentation de 1
+        base.setNewTimer(1, 3, 0, 1, 10); // un mec toutes les 3 secondes au début puis rnged avec augmentation de 1
 
         Debug.Log("Rush Hour incoming");
     }
 
     private void setGeneratorForChillHour() {
-        base.setNewTimer(5, 11, 0, 1); // Un mec toutes les 5 a 15 secondes 
+        base.setNewTimer(5, 11, 0, 1, 10); // Un mec toutes les 5 a 15 secondes 
         itemSpawnRateGen.lockLeveling(); // Empeche le leveling du generateur
 
         Debug.Log("Chill Hour incoming");
@@ -73,6 +74,8 @@ public class ClientGenerator : Generator
         if(nbRushHoursLeft <= 0) {
             // FIN DU JEU
             isRunning = false;
+            PlayerPrefs.SetInt("CurrentScore", GameScore.Instance.Score);
+            SceneManager.LoadScene("EndMenu");
             return;
         }
         switchPeriod();
@@ -120,7 +123,7 @@ public class ClientGenerator : Generator
     // Start is called before the first frame update
     protected override void Start()
     {
-        prepareInstance(5, 11, 0, 1);
+        prepareInstance(5, 11, 0, 1, 10);
         base.Start();
         itemSpawnRateGen.lockLeveling();
 
