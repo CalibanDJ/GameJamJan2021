@@ -7,6 +7,7 @@ using UnityEngine;
 public class Shape : ScriptableObject, ICharacteristic
 {
     public Sprite sprite;
+    public PhysicsMaterial2D material;
     public string shapeName;
 
     public string getName()

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class Item: DragDrop
 {
     public SpriteRenderer spriteRenderer;
+    public Rigidbody2D phisicsBody;
 
     [SerializeField]
     private ColorAttr color;
@@ -22,6 +23,8 @@ public class Item: DragDrop
     {
         if (spriteRenderer == null)
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (phisicsBody == null)
+            phisicsBody = GetComponentInChildren<Rigidbody2D>();
         if (color != null)
             setColor(color);
         if (shape != null)
@@ -45,6 +48,8 @@ public class Item: DragDrop
 
         this.shape = shape;
         spriteRenderer.sprite = shape.sprite;
+        if (shape.material != null)
+            phisicsBody.sharedMaterial = shape.material;
         if (Application.isPlaying)
         {
             foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
@@ -65,7 +70,7 @@ public class Item: DragDrop
             }
             UnityEditor.EditorApplication.delayCall += () =>
             {
-                gameObject.AddComponent<PolygonCollider2D>();
+                PolygonCollider2D coll = gameObject.AddComponent<PolygonCollider2D>();
             };
 #endif
         }
