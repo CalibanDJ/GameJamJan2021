@@ -47,20 +47,9 @@ public class Item: DragDrop
         spriteRenderer.sprite = shape.sprite;
         if (Application.isPlaying)
         {
-
             foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
             {
-                if (Application.isPlaying)
-                {
-                    Destroy(col);
-                }
-                else
-                {
-                    UnityEditor.EditorApplication.delayCall += () =>
-                    {
-                        DestroyImmediate(col);
-                    };
-                }
+                Destroy(col);
             }
             gameObject.AddComponent<PolygonCollider2D>();
         }
