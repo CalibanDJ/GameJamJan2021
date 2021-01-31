@@ -8,9 +8,14 @@ public class Janitor : MonoBehaviour
     public Sprite[] sprites;
     public GameObject standingObj;
     public GameObject movingObj;
-    public SpriteRenderer standingRenderer;
+    //public SpriteRenderer standingRenderer;
     public Transform startPoint;
     public Transform endPoint;
+    public Transform backgroundStartPoint;
+    public Transform backgroundEndPoint;
+    public AudioSource janitorSoundBg;
+    public AudioSource janitorSound;
+
 
     public float timer;
     public float durationTillDoomed = 5;
@@ -28,18 +33,23 @@ public class Janitor : MonoBehaviour
     private void moveClock() {
         timer += Time.deltaTime;
 
-        if(timer >= durationTillDoomed) {
+        /*if(timer >= durationTillDoomed) {
+            attackPlayer();
+            return;
+        }*/
+        if(standingObj.transform.position.x >= backgroundEndPoint.position.x)
+        {
             attackPlayer();
             return;
         }
-        updateStandingPosition();
+        //updateStandingPosition();
     }
 
-    private void updateStandingPosition() {
+    /*private void updateStandingPosition() {
         int positionIdx = ((int) (timer/durationTillDoomed) ) * positions.Length;
         standingObj.transform.position = positions[positionIdx];
         this.standingRenderer.sprite = sprites[positionIdx];
-    }
+    }*/
 
     public void setPreparingToAttack()
     {
@@ -47,11 +57,13 @@ public class Janitor : MonoBehaviour
         {
             preparingToAttack = true;
             standingObj.SetActive(true);
+            standingObj.transform.position = backgroundStartPoint.position;
         }
     }
 
     // TODO
     private void attackPlayer() {
+        janitorSoundBg.Stop();
         preparingToAttack = false; // is attacking
         standingObj.SetActive(false);
 
@@ -72,14 +84,21 @@ public class Janitor : MonoBehaviour
     void Update()
     {
         if(preparingToAttack) {
+            if (!janitorSoundBg.isPlaying)
+                janitorSoundBg.Play();
             moveClock();
+
         }
         if (doomActivated)
         {
+
+            if (!janitorSound.isPlaying)
+                janitorSound.Play();
             if (movingObj.transform.position.x <= endPoint.position.x)
             {
                 movingObj.SetActive(false);
                 doomActivated = false;
+                janitorSound.Stop();
             }
         }
     }
