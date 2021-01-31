@@ -45,12 +45,12 @@ public class ItemGenerator : Generator
     // Start is called before the first frame update
     protected override void Start()
     {
-        prepareInstance(0, 3, 0, 1);
+        prepareInstance(0, 3, 0, 1, 20);
         base.Start();
 
         data = GameData.Instance;
-        itemShapeGen = new GrowingRNG(data.shapes.Length, data.shapes.Length / 2, 1);
-        itemColorGen = new GrowingRNG(data.colors.Length, data.colors.Length / 2, 1);
+        itemShapeGen = new GrowingRNG(data.shapes.Length, 1, 1, 20);
+        itemColorGen = new GrowingRNG(data.colors.Length, 2, 1, 20);
         setSpawnPosition(transform.position);
     }
 

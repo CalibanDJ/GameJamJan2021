@@ -32,6 +32,22 @@ public class GrowingRNG
         _isLocked = false;
     }
 
+    public GrowingRNG(int poolSize, int startPoolSize, int growthStep, int growThreshold) {
+        Assert.IsTrue(poolSize >= 0, "pool size is always positive, not like you :c \n");
+        Assert.IsTrue(startPoolSize >= 0 && startPoolSize < poolSize, "start pool size is not extreme like you, should be between 0 and pool Size \n");
+        Assert.IsTrue(growthStep >= 0, "growth step can't be negative >< ! \n");
+
+        // Pool size related 
+        _poolSize = poolSize;
+        _currentPoolSize = startPoolSize;
+
+        // Growth related
+        _growthStep = growthStep;
+        _growthThreshold = growThreshold; // Threshold needed to grow, can be changed according to need. This is a default value for tests.
+        _nbGenerationToGrow = _growthThreshold;
+        _isLocked = false;
+    }
+
     public int generateNumber() {
         int nb = Random.Range(0, _currentPoolSize);
 

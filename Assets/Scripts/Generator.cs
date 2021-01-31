@@ -12,6 +12,7 @@ public abstract class Generator : MonoBehaviour
     private int maxSecondDelay = 6;
     private int step = 2;
     private int startTime = 0;
+    private int growThreshold = 1;
 
     public float timeBeforeNextSpawn;
 
@@ -30,20 +31,23 @@ public abstract class Generator : MonoBehaviour
 
     public abstract void generate();
 
-    protected void prepareInstance(int minScd, int maxScd, int startcd, int step) {
+    protected void prepareInstance(int minScd, int maxScd, int startcd, int step, int growThreshold) {
         // DEFAULT Parameter :
         minSecond = minScd;
         maxSecondDelay = maxScd;
         startTime = startcd;
         this.step = step;
+        this.growThreshold = growThreshold;
     }
 
-    protected void setNewTimer(int minScd, int maxScd, int startcd, int step) {
-        prepareInstance(minScd, maxScd, startcd, step);
+    protected void setNewTimer(int minScd, int maxScd, int startcd, int step, int growThreshold) {
+        prepareInstance(minScd, maxScd, startcd, step, growThreshold);
         
-        itemSpawnRateGen = new GrowingRNG(maxSecondDelay, startTime, step); // First parameter + minSecond is the biggest interval between two spawns
-                                                                            // First - (Second parameter - 1) is the initial smallest interval between two spawns
-                                                                            // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
+        // First parameter + minSecond is the biggest interval between two spawns
+        // First - (Second parameter - 1) is the initial smallest interval between two spawns
+        // Third parameter is the step. At each level, the smallest interval is lowered by this parameter.
+        itemSpawnRateGen = new GrowingRNG(maxSecondDelay, startTime, step, this.growThreshold);
+
         generateNewTimer();
     }
 
