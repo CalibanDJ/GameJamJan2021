@@ -45,32 +45,41 @@ public class Item: DragDrop
 
         this.shape = shape;
         spriteRenderer.sprite = shape.sprite;
-        foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
+        if (Application.isPlaying)
         {
-            if (Application.isPlaying)
+
+            foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
             {
-                Destroy(col);
+                if (Application.isPlaying)
+                {
+                    Destroy(col);
+                }
+                else
+                {
+                    UnityEditor.EditorApplication.delayCall += () =>
+                    {
+                        DestroyImmediate(col);
+                    };
+                }
             }
-            else
+            gameObject.AddComponent<PolygonCollider2D>();
+        }
+        else
+        {
+#if UNITY_EDITOR
+            foreach (Collider2D col in spriteRenderer.GetComponents<Collider2D>())
             {
                 UnityEditor.EditorApplication.delayCall += () =>
                 {
                     DestroyImmediate(col);
                 };
             }
-        }
-
-        if (Application.isPlaying)
-        {
-            gameObject.AddComponent<PolygonCollider2D>();
-        }
-        else
-        {
             UnityEditor.EditorApplication.delayCall += () =>
             {
                 gameObject.AddComponent<PolygonCollider2D>();
             };
         }
+#endif
     }
 
     public bool hasCharacteristic(ICharacteristic ch)
