@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClientGenerator : Generator
 {
@@ -73,6 +74,8 @@ public class ClientGenerator : Generator
         if(nbRushHoursLeft <= 0) {
             // FIN DU JEU
             isRunning = false;
+            PlayerPrefs.SetInt("CurrentScore", GameScore.Instance.Score);
+            SceneManager.LoadScene("EndMenu");
             return;
         }
         switchPeriod();
