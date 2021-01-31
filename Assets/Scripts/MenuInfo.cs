@@ -20,7 +20,7 @@ public class MenuInfo : MonoBehaviour
                 StartCoroutine(wait(45f));
                 if (!isOpen)
                 {  
-                    panel.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText("Alo");
+                    panel.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText("Des voyageurs arrivant à la porte 404 ont perdus leurs objets, quel patatra !Donnez leurs les objets trouvés correspondant à leur besoin, mais attention à ne pas vous tromper !");
                 } else
                 {
                     panel.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText("Infos");
