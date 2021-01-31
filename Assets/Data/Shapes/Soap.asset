@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae51364ad6c14348ad5d317f2e5ad29, type: 3}
-  m_Name: Capin
+  m_Name: Soap
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6660bbeaba21c0649b61a71bd18f584e, type: 3}
-  material: {fileID: 6200000, guid: 1442aaceeb22cc04fb91f4f8b97542a7, type: 2}
-  shapeName: Canard
+  sprite: {fileID: 21300000, guid: 168e5bc05d9aad3438dc4e171aa16786, type: 3}
+  material: {fileID: 6200000, guid: 8b829eb135cbc784facdf8f63480c17c, type: 2}
+  shapeName: Savon

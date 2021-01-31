@@ -37,6 +37,10 @@ public class MenuLeaderBoard : MonoBehaviour
     public void startAnim()
     {
         closedObj.SetActive(!open);
+        if (open)
+            transform.SetAsLastSibling();
+        else
+            transform.SetSiblingIndex(transform.parent.childCount - 2);
     }
 
     public void endAnim()
