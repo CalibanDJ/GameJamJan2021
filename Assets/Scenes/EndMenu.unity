@@ -294,9 +294,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2042560821}
-        m_TargetAssemblyTypeName: QuitScript, Assembly-CSharp
-        m_MethodName: Quit
+      - m_Target: {fileID: 30253602}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: loadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,9 +353,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 30253597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42983a16362723f4fbcda25dcd37377a, type: 3}
+  m_Script: {fileID: 11500000, guid: b99eeea4498f6594e9ea67531d873081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: Menu
   sound: {fileID: 8300000, guid: e5627e2544e44014bbe52b5ac1874b3e, type: 3}
 --- !u!1 &94683813
 GameObject:

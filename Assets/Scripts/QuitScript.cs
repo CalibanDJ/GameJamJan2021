@@ -7,7 +7,6 @@ public class QuitScript : MonoBehaviour
 {
     public void Quit()
     {
-        //Application.Quit();
-        SceneManager.LoadScene("Menu");
+        Application.Quit();
     }
 }
