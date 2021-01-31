@@ -8,7 +8,6 @@ public class Janitor : MonoBehaviour
     public Sprite[] sprites;
     public GameObject standingObj;
     public GameObject movingObj;
-    public Collider2D wallCollider;
     public SpriteRenderer standingRenderer;
     public Transform startPoint;
     public Transform endPoint;

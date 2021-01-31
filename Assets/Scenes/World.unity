@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &34849100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141624, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266911660625141630, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
+      propertyPath: m_Name
+      value: Janitor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f9f3714985a9bd48a2c7c17483e8106, type: 3}
 --- !u!1001 &78237349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1315,7 +1372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &503485234
 MonoBehaviour:
@@ -1439,6 +1496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538959628}
   - component: {fileID: 538959630}
+  - component: {fileID: 538959629}
   m_Layer: 8
   m_Name: BorderBottom
   m_TagString: Untagged
@@ -1465,6 +1523,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -4.99}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &538959629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538959627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0ce16e87afa0b43bd7c5886f011121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbItems: 0
 --- !u!61 &538959630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1602,7 +1673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &570826414
 MonoBehaviour:
@@ -2788,7 +2859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1896117973
 AudioSource:
@@ -3511,7 +3582,7 @@ RectTransform:
   - {fileID: 237580717}
   - {fileID: 563451365}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
