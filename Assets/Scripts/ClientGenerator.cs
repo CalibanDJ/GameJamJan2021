@@ -54,7 +54,7 @@ public class ClientGenerator : Generator
     }
 
     private void setGeneratorForChillHour() {
-        base.setNewTimer(5, 11, 0, 1, 10); // Un mec toutes les 5 a 15 secondes 
+        base.setNewTimer(5, 6, 0, 1, 10); // Un mec toutes les 5 a 15 secondes 
         itemSpawnRateGen.lockLeveling(); // Empeche le leveling du generateur
 
         Debug.Log("Chill Hour incoming");
@@ -82,11 +82,20 @@ public class ClientGenerator : Generator
     }
 
     private void assignDesiredItem(Client c) {
-        int shapeIdx = Random.Range(0, itemGen.getShapePoolSize());
-        int colorIdx = Random.Range(0, itemGen.getColorPoolSize());
+        int shapeIdx = Random.Range(0, itemGen.getShapePoolSize() + 1) - 1;
+        bool noShape = shapeIdx == -1;
+        int colorIdx;
+        if(noShape) {
+            colorIdx = Random.Range(0, itemGen.getColorPoolSize());
+            c.desiredColor = itemGen.getGameData().colors[colorIdx];
+        }
+        else {
+            c.desiredShape = itemGen.getGameData().shapes[shapeIdx];
 
-        c.desiredShape = itemGen.getGameData().shapes[shapeIdx];
-        c.desiredColor = itemGen.getGameData().colors[colorIdx];
+            colorIdx = Random.Range(0, itemGen.getColorPoolSize() + 1) - 1;
+            c.desiredColor = colorIdx == -1 ? null : itemGen.getGameData().colors[colorIdx];
+        }
+        
     }
 
     private void assignWaitingLine(Client c, int idx) {
