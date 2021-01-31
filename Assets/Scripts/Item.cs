@@ -78,8 +78,8 @@ public class Item: DragDrop
             {
                 gameObject.AddComponent<PolygonCollider2D>();
             };
-        }
 #endif
+        }
     }
 
     public bool hasCharacteristic(ICharacteristic ch)
