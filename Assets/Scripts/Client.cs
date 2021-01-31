@@ -37,6 +37,11 @@ public class Client : MonoBehaviour
 
     public void OnMouseDown()
     {
+        showDialog();
+    }
+
+    private void showDialog()
+    {
         if (lastBubble != null)
         {
             lastBubble.resetTimer();
@@ -79,6 +84,11 @@ public class Client : MonoBehaviour
     {
         mouseCollider.enabled = active;
         this.active = active;
+        if (active)
+        {
+            Start();
+            showDialog();
+        }
     }
 
     public void Update()
