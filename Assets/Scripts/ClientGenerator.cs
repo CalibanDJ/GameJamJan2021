@@ -48,7 +48,7 @@ public class ClientGenerator : Generator
     }
 
     private void setGeneratorForRushHour() {
-        base.setNewTimer(0, 3, 0, 1, 10); // un mec toutes les 3 secondes au début puis rnged avec augmentation de 1
+        base.setNewTimer(1, 3, 0, 1, 10); // un mec toutes les 3 secondes au début puis rnged avec augmentation de 1
 
         Debug.Log("Rush Hour incoming");
     }
