@@ -99,9 +99,9 @@ public class Item: DragDrop
         }
     }
 
-    public override void OnEndDrag(PointerEventData eventData)
+    public override void OnMouseUp()
     {
-        base.OnEndDrag(eventData);
+        base.OnMouseUp();
         if (hoveredClient != null)
         {
             hoveredClient.onGive(this);

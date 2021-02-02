@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour
 {
     public string layerName;
     public Camera cam;
@@ -35,28 +34,22 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         WorldSound.Instance.playDragItem();
         CursorController.Instance.setClicked();
-    }
 
-    public void OnMouseUp()
-    {
-        CursorController.Instance.setUnclicked();
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        mouseJoint.anchor = transform.InverseTransformPoint(eventData.pointerPressRaycast.worldPosition);
-        mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
+        mouseJoint.anchor = transform.InverseTransformPoint(cam.ScreenToWorldPoint(Input.mousePosition));
+        mouseJoint.target = cam.ScreenToWorldPoint(Input.mousePosition);
         mouseJoint.enabled = true;
         gameObject.layer = movingLayer;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    private void OnMouseDrag()
     {
-        mouseJoint.target = cam.ScreenToWorldPoint(eventData.position);
+        mouseJoint.target = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public virtual void OnEndDrag(PointerEventData eventData)
+    public virtual void OnMouseUp()
     {
+        CursorController.Instance.setUnclicked();
+
         // Reset phisics
         mouseJoint.enabled = false;
         gameObject.layer = normalLayer;
@@ -68,7 +61,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         float mag = itemBody.velocity.magnitude;
         if (mag > releaseMaxSpeed)
             itemBody.velocity = itemBody.velocity / mag * releaseMaxSpeed;
-
     }
 }
 
