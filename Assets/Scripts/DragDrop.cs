@@ -35,6 +35,7 @@ public class DragDrop : MonoBehaviour
         WorldSound.Instance.playDragItem();
         CursorController.Instance.setClicked();
 
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0.5f); // Put item in front of every items
         mouseJoint.anchor = transform.InverseTransformPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         mouseJoint.target = cam.ScreenToWorldPoint(Input.mousePosition);
         mouseJoint.enabled = true;
@@ -51,6 +52,7 @@ public class DragDrop : MonoBehaviour
         CursorController.Instance.setUnclicked();
 
         // Reset phisics
+        transform.position = new Vector3(transform.position.x, transform.position.y, 1 + ItemGenerator.Instance.nextItemZOffset()); // Put item in front of every existing items
         mouseJoint.enabled = false;
         gameObject.layer = normalLayer;
 

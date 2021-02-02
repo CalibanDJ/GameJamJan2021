@@ -8,8 +8,7 @@ public class ItemGenerator : Generator
 
     private GrowingRNG itemShapeGen;
     private GrowingRNG itemColorGen;
-
-    private Vector2 spawnPosition;
+    
     private GameData data;
 
     public Item itemPrefab;
@@ -18,6 +17,7 @@ public class ItemGenerator : Generator
     public static ItemGenerator Instance { get; private set; }
 
     public AudioSource audioSource;
+    private float itemZOffset = 0.0f;
 
     public void Awake()
     {
@@ -28,22 +28,17 @@ public class ItemGenerator : Generator
         int shapeIdx = itemShapeGen.generateNumber();
         int colorIdx = itemColorGen.generateNumber();
 
-        Item i = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
-        i.transform.SetParent(ItemsGameObject.transform);
-
         float randX = Random.Range(0.0f, 2.0f);
         int randY = Random.Range(0, 3);
         int randAngles = Random.Range(0, 360);
-        i.transform.SetPositionAndRotation(new Vector3(transform.position.x + randX, transform.position.y + randY, 1), Quaternion.AngleAxis(randAngles, Vector3.back));
-        i.transform.GetComponent<SpriteRenderer>().sortingOrder = 5;
+
+        Vector3 pos = new Vector3(transform.position.x + randX, transform.position.y + randY, 1 + nextItemZOffset());
+        Item i = Instantiate(itemPrefab, pos, Quaternion.AngleAxis(randAngles, Vector3.back), ItemsGameObject.transform);
+
         i.setColor(data.colors[colorIdx]);
         i.setShape(data.shapes[shapeIdx]);
 
         //audioSource.Play();
-    }
-
-    public void setSpawnPosition(Vector2 newPosition) {
-        spawnPosition = newPosition;
     }
 
     // Start is called before the first frame update
@@ -55,7 +50,6 @@ public class ItemGenerator : Generator
         data = GameData.Instance;
         itemShapeGen = new GrowingRNG(data.shapes.Length, 1, 1, 20);
         itemColorGen = new GrowingRNG(data.colors.Length, 2, 1, 20);
-        setSpawnPosition(transform.position);
     }
 
     public int getShapePoolSize() {
@@ -68,5 +62,11 @@ public class ItemGenerator : Generator
 
     public GameData getGameData() {
         return data;
+    }
+
+    public float nextItemZOffset()
+    {
+        itemZOffset -= 1.0e-5f;
+        return itemZOffset;
     }
 }
