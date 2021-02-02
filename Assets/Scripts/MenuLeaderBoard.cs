@@ -40,7 +40,7 @@ public class MenuLeaderBoard : MonoBehaviour
         if (open)
             transform.SetAsLastSibling();
         else
-            transform.SetSiblingIndex(transform.parent.childCount - 2);
+            transform.SetAsFirstSibling();
     }
 
     public void endAnim()
