@@ -107,11 +107,11 @@ public class Client : MonoBehaviour
     public void reject()
     {
         Transform itemParent = ItemGenerator.Instance.ItemsGameObject.transform;
-        bool itemPresent = itemParent.GetComponentsInChildren<Item>().Any(item => desiredCharacteristics.All(ch => item.hasCharacteristic(ch)));
+        bool itemPresent = itemParent.GetComponentsInChildren<Item>().Any(item => item.timeSinceCreation > 1.5f && desiredCharacteristics.All(ch => item.hasCharacteristic(ch)));
 
         if (itemPresent)
         {
-            GameScore.Instance.addScore(0);
+            GameScore.Instance.addScore(0); // Reset combo
             WorldSound.Instance.playWrongItem();
         }
         

@@ -16,8 +16,10 @@ public class Item: DragDrop
 
     private ColorAttr oldColor;
     private Shape oldShape;
-
+    private float creationTime;
     private Client hoveredClient;
+
+    public float timeSinceCreation => Time.timeSinceLevelLoad - creationTime;
 
     protected override void Awake()
     {
@@ -29,6 +31,7 @@ public class Item: DragDrop
             setColor(color);
         if (shape != null)
             setShape(shape);
+        creationTime = Time.timeSinceLevelLoad;
         base.Awake();
     }
 
